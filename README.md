@@ -83,6 +83,14 @@ Notes:
 - Embedding batches bisect on failures and skip only bad inputs; skips are recorded in `data/index_reports/`.
 - Collection dimensions are validated and recreated if mismatched.
 
+### Scripts
+Utility scripts live under `scripts/`.
+
+- Re-process previously failed conversations with conversation-level chunking:
+```bash
+uv run python scripts/process_failed_conversations.py
+```
+
 ### Context-Aware Search
 The search API returns the target message plus surrounding context.
 
