@@ -1,0 +1,72 @@
+[project]
+name = "ai-memory"
+version = "0.1.0"
+description = "Personal digital memory tool with advanced RAG capabilities"
+authors = [
+    {name = "Aleksandr Enatchkebia", email = "your.email@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0.0",
+    "chromadb>=0.4.0",
+    "openai>=1.0.0",
+    "fastapi>=0.100.0",
+    "uvicorn[standard]>=0.20.0",
+    "pandas>=2.0.0",
+    "numpy<2.0.0",
+    "python-dateutil>=2.8.0",
+    "langdetect>=1.0.9",
+    "polyglot>=16.7.4",
+    "nltk>=3.8.0",
+    "python-dotenv>=1.0.0",
+    "loguru>=0.7.0",
+    "rich>=13.0.0",
+    "click>=8.1.0",
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "httpx>=0.24.0",
+    "hdbscan>=0.8.29",
+    "scikit-learn>=1.3.0",
+    "scipy>=1.11.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.5.0",
+    "pre-commit>=3.3.0",
+]
+
+[project.scripts]
+ai-memory = "ai_memory.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ai_memory"]
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
